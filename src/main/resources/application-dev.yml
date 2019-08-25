@@ -1,0 +1,74 @@
+server:
+  port: 8087
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT-8
+
+  profiles:
+    active: dev
+
+    datasource:
+      url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+
+      jpa:
+        hibernate:
+          ddl-auto: update
+        database: mysql
+        show-sql: true
+
+
+  #JTA实现多数据源分布式事务
+#自定义多数据源配置
+#primarydb:
+#  uniqueResourceName: primary
+#  xaDataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+#  xaProperties:
+#    url: jdbc:mysql://192.168.1.91:3306/testdb?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    user: test
+#    password: 4rfv$RFV
+#  exclusiveConnectionMode: true
+#  minPoolSize: 3
+#  maxPoolSize: 10
+#  testQuery: SELECT 1 from dual #由于采用HikiriCP，用于检测数据库连接是否存活。
+#
+#secondarydb:
+#  uniqueResourceName: secondary
+#  xaDataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlXADataSource
+#  xaProperties:
+#    url: jdbc:mysql://192.168.1.91:3306/testdb2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    user: test
+#    password: 4rfv$RFV
+#  exclusiveConnectionMode: true
+#  minPoolSize: 3
+#  maxPoolSize: 10
+#  testQuery: SELECT 1 from dual #由于采用HikiriCP，用于检测数据库连接是否存活
+  #多个数据源
+#  datasource:
+#    primary:
+#      jdbc-url: jdbc:mysql://192.168.1.91:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#      username: root
+#      password: root
+#      driver-class-name: com.mysql.jdbc.Driver
+#    secondary:
+#      jdbc-url: jdbc:mysql://192.168.1.91:3306/springboot2?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#      username: root
+#      password: root
+#      driver-class-name: com.mysql.jdbc.Driver
+  #单个数据源
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.jdbc.Driver
+
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+
+
